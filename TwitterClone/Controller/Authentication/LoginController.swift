@@ -55,6 +55,14 @@ class LoginController: UIViewController {
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    private let dontHaveAccountButton: UIButton = {
+        let button = Utilities().attributedButton("Don't have account? ", "Sign Up")
+        button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
+        
         return button
     }()
     
@@ -66,6 +74,11 @@ class LoginController: UIViewController {
     }
     
     // MARK: - Selectors
+    
+    @objc func handleSignUp() {
+        let controller = RegistrationController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
     
     @objc func handleLogin() {
         print("Handle login here...")
@@ -87,5 +100,8 @@ class LoginController: UIViewController {
         stack.distribution = .fillEqually
         view.addSubview(stack)
         stack.anchor(top: logoImageView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingLeft: 32, paddingRight: 32)
+        
+        view.addSubview(dontHaveAccountButton)
+        dontHaveAccountButton.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingLeft: 16, paddingBottom: 8 ,paddingRight: 16, height: 20)
     }
 }
