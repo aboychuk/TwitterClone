@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import Firebase
 
 class RegistrationController: UIViewController {
     
     // MARK: - Properties
     
     let imagePicker = UIImagePickerController()
+    var profileImage: UIImage?
     
     private let addPhotoButton: UIButton = {
         let button = UIButton(type: .system)
@@ -58,18 +60,19 @@ class RegistrationController: UIViewController {
     
     private let passwordTextField: UITextField = {
         let tf = Utilities().textField(withPlaceholder: "Password")
+        tf.isSecureTextEntry = true
     
         return tf
     }()
     
     private let fullnameTextField: UITextField = {
-        let tf = Utilities().textField(withPlaceholder: "Password")
+        let tf = Utilities().textField(withPlaceholder: "Full name")
     
         return tf
     }()
     
     private let usernameTextField: UITextField = {
-        let tf = Utilities().textField(withPlaceholder: "Password")
+        let tf = Utilities().textField(withPlaceholder: "User name")
     
         return tf
     }()
@@ -104,7 +107,18 @@ class RegistrationController: UIViewController {
     // MARK: - Selectors
     
     @objc func handleSignUp() {
-        print("Handle sign up here")
+        guard let email = emailTextField.text, let password = passwordTextField.text,
+              let fullname = fullnameTextField.text, let userName = usernameTextField.text,
+              let profileImage = profileImage else { return }
+        let credentials = AuthCredentials(email: email,
+                                          password: password,
+                                          fullName: fullname,
+                                          userName: userName,
+                                          image: profileImage)
+        AuthService.shared.registerUser(credentials: credentials) { (error, ref) in
+            print("DEBUG: User added succesfully..")
+            print("DEBUG: UI need to be updated here..")
+        }
     }
     
     @objc func handleAddProfilePhoto() {
@@ -148,6 +162,7 @@ class RegistrationController: UIViewController {
 extension RegistrationController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let profileImage = info[.editedImage] as? UIImage else { return }
+        self.profileImage = profileImage
         
         addPhotoButton.layer.cornerRadius = addPhotoButton.bounds.height / 2
         addPhotoButton.layer.masksToBounds = true

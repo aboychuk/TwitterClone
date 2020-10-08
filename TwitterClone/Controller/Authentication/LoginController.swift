@@ -36,7 +36,7 @@ class LoginController: UIViewController {
 
     private let emailTextField: UITextField = {
         let tf = Utilities().textField(withPlaceholder: "Email")
-         
+        tf.isSecureTextEntry = true
         return tf
     }()
     

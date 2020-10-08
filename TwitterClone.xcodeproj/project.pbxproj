@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,8 @@
 		674BDA1F252B5ED800C8B0B2 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDA1E252B5ED800C8B0B2 /* RegistrationController.swift */; };
 		674BDA22252B7F8500C8B0B2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDA21252B7F8500C8B0B2 /* Utilities.swift */; };
 		674BDA25252DBB7C00C8B0B2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 674BDA24252DBB7B00C8B0B2 /* GoogleService-Info.plist */; };
+		67903AD2252E3AAF0010BB40 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67903AD1252E3AAF0010BB40 /* Constants.swift */; };
+		67903AD5252F2FDA0010BB40 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67903AD4252F2FDA0010BB40 /* AuthService.swift */; };
 		67BD451F252B3A87008E39A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BD451E252B3A87008E39A7 /* AppDelegate.swift */; };
 		67BD4521252B3A87008E39A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BD4520252B3A87008E39A7 /* SceneDelegate.swift */; };
 		67BD4526252B3A87008E39A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67BD4524252B3A87008E39A7 /* Main.storyboard */; };
@@ -36,6 +38,8 @@
 		674BDA1E252B5ED800C8B0B2 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		674BDA21252B7F8500C8B0B2 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		674BDA24252DBB7B00C8B0B2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		67903AD1252E3AAF0010BB40 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		67903AD4252F2FDA0010BB40 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		67BD451B252B3A87008E39A7 /* TwitterClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67BD451E252B3A87008E39A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67BD4520252B3A87008E39A7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +116,7 @@
 			children = (
 				674BDA17252B568500C8B0B2 /* Extensions.swift */,
 				674BDA21252B7F8500C8B0B2 /* Utilities.swift */,
+				67903AD1252E3AAF0010BB40 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -119,6 +124,7 @@
 		67BD4535252B3B0B008E39A7 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				67903AD4252F2FDA0010BB40 /* AuthService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -163,7 +169,6 @@
 				95557160362DC38C2DD0E222 /* Pods-TwitterClone.debug.xcconfig */,
 				B1C64515E7BFDFA8791330D3 /* Pods-TwitterClone.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -296,11 +301,13 @@
 				67BD451F252B3A87008E39A7 /* AppDelegate.swift in Sources */,
 				674BDA18252B568500C8B0B2 /* Extensions.swift in Sources */,
 				674BDA1C252B5EC500C8B0B2 /* LoginController.swift in Sources */,
+				67903AD5252F2FDA0010BB40 /* AuthService.swift in Sources */,
 				674216C5252B464A000B2DF4 /* ExploreController.swift in Sources */,
 				67BD4521252B3A87008E39A7 /* SceneDelegate.swift in Sources */,
 				674216C2252B4622000B2DF4 /* FeedController.swift in Sources */,
 				674BDA1F252B5ED800C8B0B2 /* RegistrationController.swift in Sources */,
 				674216BF252B3F0F000B2DF4 /* MainTabController.swift in Sources */,
+				67903AD2252E3AAF0010BB40 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
