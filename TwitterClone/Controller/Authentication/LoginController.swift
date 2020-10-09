@@ -36,13 +36,13 @@ class LoginController: UIViewController {
 
     private let emailTextField: UITextField = {
         let tf = Utilities().textField(withPlaceholder: "Email")
-        tf.isSecureTextEntry = true
         return tf
     }()
     
     private let passwordTextField: UITextField = {
         let tf = Utilities().textField(withPlaceholder: "Password")
-    
+        tf.isSecureTextEntry = true
+
         return tf
     }()
     
@@ -81,7 +81,18 @@ class LoginController: UIViewController {
     }
     
     @objc func handleLogin() {
-        print("Handle login here...")
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        AuthService.shared.logUserIn(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                print("DEBUG: Error occured logging in user \(error.localizedDescription)")
+                return
+            } else {
+                guard let tab = UIWindow.key?.rootViewController as? MainTabController else { return }
+                tab.authenticateUserAndConfigureUI()
+                self.dismiss(animated: true)
+            }
+        }
     }
     
     // MARK: - Helpers

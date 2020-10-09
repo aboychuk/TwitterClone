@@ -95,3 +95,15 @@ extension UIColor {
     
     static let twitterBlue = UIColor.rgb(red: 29, green: 161, blue: 242)
 }
+
+// MARK: - UIWindow
+
+extension UIWindow {
+    static var key: UIWindow? {
+        if #available(iOS 13, *) {
+            return UIApplication.shared.windows.first { $0.isKeyWindow }
+        } else {
+            return UIApplication.shared.keyWindow
+        }
+    }
+}
