@@ -13,6 +13,7 @@ def pods
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'Firebase/Auth'
+  pod 'SDWebImage'
 end
 
 target 'TwitterClone' do
