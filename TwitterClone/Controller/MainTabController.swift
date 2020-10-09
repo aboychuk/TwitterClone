@@ -47,10 +47,16 @@ class MainTabController: UITabBarController {
                 self.present(nav, animated: true)
             }
         } else {
-            UserService.shared.fetchUser()
+            fetchUser()
             configureViewControllers()
             configureUI()
         }
+    }
+    
+    func fetchUser() {
+        UserService.shared.fetchUser(completion: { user in
+            print("DEBUG: User name is \(user.fullname)")
+        })
     }
     
     func logUserOut() {
