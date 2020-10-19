@@ -108,7 +108,7 @@ class RegistrationController: UIViewController {
     
     @objc func handleSignUp() {
         guard let email = emailTextField.text, let password = passwordTextField.text,
-              let fullname = fullnameTextField.text, let username = usernameTextField.text,
+              let fullname = fullnameTextField.text, let username = usernameTextField.text?.lowercased(),
               let profileImage = profileImage else { return }
         let credentials = AuthCredentials(email: email,
                                           password: password,
@@ -117,7 +117,7 @@ class RegistrationController: UIViewController {
                                           image: profileImage)
         AuthService.shared.registerUser(credentials: credentials) { (error, ref) in
             guard let tab = UIWindow.key?.rootViewController as? MainTabController else { return }
-            tab.authenticateUserAndConfigureUI()
+            tab.authenticateUserAndConfigureUI() 
             self.dismiss(animated: true)
         }
     }

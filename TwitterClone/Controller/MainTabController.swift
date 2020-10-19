@@ -67,7 +67,7 @@ class MainTabController: UITabBarController {
     }
     
     func fetchUser() {
-        UserService.shared.fetchUser(completion: { user in
+        UserService.shared.fetchCurrentUser(completion: { user in
             self.user = user
         })
     }
@@ -88,7 +88,8 @@ class MainTabController: UITabBarController {
     }
     
     func configureViewControllers() {
-        let feed = FeedController()
+        let collectionViewLayout = UICollectionViewFlowLayout()
+        let feed = FeedController(collectionViewLayout: collectionViewLayout)
         let feedImage = UIImage(named: "home_unselected")
         let nav1 = templateNavigationController(image: feedImage, rootController: feed)
         
