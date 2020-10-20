@@ -34,7 +34,7 @@ struct TweetViewModel {
         return formatter.string(from: timestamp, to: now) ?? "0s"
     }
     
-    // MARK: - Init
+    // MARK: - Lifecycle
     
     init(tweet: Tweet) {
         self.tweet = tweet

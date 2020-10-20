@@ -8,7 +8,7 @@
 import UIKit
 
 protocol TweetCellDelegate: class {
-    func didTappedOnProfileImage()
+    func didTappedOnProfileImage(_ cell: TweetCell)
 }
 
 class TweetCell: UICollectionViewCell {
@@ -84,7 +84,7 @@ class TweetCell: UICollectionViewCell {
         return button
     }()
     
-    // MARK: - Init
+    // MARK: - Lifecycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -126,7 +126,7 @@ class TweetCell: UICollectionViewCell {
     
     @objc func handleProfileImageTapped() {
         print("DEBUG: User tapped on profile image")
-        delegate?.didTappedOnProfileImage()
+        delegate?.didTappedOnProfileImage(self)
     }
     
     @objc func handleCommentTapped() {

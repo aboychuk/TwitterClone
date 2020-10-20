@@ -19,7 +19,7 @@ struct Tweet {
     var timestamp: Date?
     var user: User
     
-    // MARK: - Init
+    // MARK: - Lifecycle
     
     init(user: User, tweetID: String, dictionary: [String: Any]) {
         self.tweetID = tweetID

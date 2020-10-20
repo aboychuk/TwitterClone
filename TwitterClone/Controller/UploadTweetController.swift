@@ -41,7 +41,7 @@ class UploadTweetController: UIViewController {
     
     private let captionTextView = CaptionTextView()
     
-    // MARK: - Init
+    // MARK: - Lifecycle
     
     init(user: User) {
         self.user = user

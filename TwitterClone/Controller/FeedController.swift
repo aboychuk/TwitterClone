@@ -13,18 +13,13 @@ private let reuseIdentifier = "TweetCell"
 class FeedController: UICollectionViewController {
     
     // MARK: - Properties
-    var count = 0
+    
     var user: User? {
-        didSet {
-//            print("DEBUG: user set in \(FeedController.self) name is \(String(describing: user?.fullname))")
-            configureLefBarButtonItem()
-        }
+        didSet { configureLefBarButtonItem() }
     }
     
     private var tweets = [Tweet]() {
-        didSet {
-            collectionView.reloadData()
-        }
+        didSet { collectionView.reloadData() }
     }
     
     
@@ -35,6 +30,12 @@ class FeedController: UICollectionViewController {
         
         configureUI()
         fetchTweets()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.barStyle = .default 
+        navigationController?.isNavigationBarHidden = false
     }
     
     // MARK: - API
@@ -100,7 +101,13 @@ extension FeedController: UICollectionViewDelegateFlowLayout {
 // MARK: - TweetCellDelegate
 
 extension FeedController: TweetCellDelegate {
+    func didTappedOnProfileImage(_ cell: TweetCell) {
+        guard let user = cell.tweet?.user else { return }
+        let vc = ProfileController(user: user)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func didTappedOnProfileImage() {
-        print("DEBUG:Controller got trigerred")
+       
     }
 }
