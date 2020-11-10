@@ -80,7 +80,7 @@ class ProfileController: UICollectionViewController {
     }
 }
 
-// MARK: - CollectionViewDataSource
+// MARK: - UICollectionViewDataSource
 
 extension ProfileController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -94,6 +94,8 @@ extension ProfileController {
         return cell
     }
 }
+
+// MARK: - UICollectionViewDelegate
 
 extension ProfileController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
