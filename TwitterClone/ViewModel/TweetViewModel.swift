@@ -43,12 +43,18 @@ struct TweetViewModel {
         
         return formatter.string(from: timestamp, to: now) ?? "0s"
     }
-    
     var headerTimestamp: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "h:mm a • MM/dd/yyyy"
         
         return formatter.string(from: tweet.timestamp)
+    }
+    var likeButtonTintColor: UIColor {
+        return tweet.didLike ? .red : .lightGray
+    }
+    var likeButtonImage: UIImage {
+        let imageName = tweet.didLike ? "like_filled" : "like"
+        return UIImage(named: imageName)!
     }
     
     // MARK: - Lifecycle
@@ -68,7 +74,6 @@ struct TweetViewModel {
                                                                                   .foregroundColor: UIColor.lightGray]))
         return attributedTitle
     }
-    
     func size(forWidth width: CGFloat) -> CGSize {
          let measurementLabel = UILabel()
         measurementLabel.text = tweet.caption

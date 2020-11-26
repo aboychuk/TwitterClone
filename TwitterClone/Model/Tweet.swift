@@ -14,10 +14,11 @@ struct Tweet {
     let caption: String
     let tweetID: String
     let uid: String
-    let likes: Int
+    var likes: Int
     let retweetCount: Int
     var timestamp: Date
     var user: User
+    var didLike: Bool = false
     
     // MARK: - Lifecycle
     

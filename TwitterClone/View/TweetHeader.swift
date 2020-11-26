@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol TweetHeaderDelegate: class {
+    func showActionSheet()
+}
+
 class TweetHeader: UICollectionReusableView {
     
     // MARK: - Properties
@@ -14,7 +18,7 @@ class TweetHeader: UICollectionReusableView {
     var tweet: Tweet? {
         didSet { configure() }
     }
-    
+    weak var delegate: TweetHeaderDelegate?
     private lazy var profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
@@ -175,6 +179,7 @@ class TweetHeader: UICollectionReusableView {
         let actionStack = UIStackView(arrangedSubviews: [commentButton, retweetButton, likeButton, shareButton])
         actionStack.spacing = 72
         actionStack.distribution = .fillEqually
+        
         addSubview(actionStack)
         actionStack.centerX(inView: self)
         actionStack.anchor(top: statsView.bottomAnchor, paddingTop: 16)
@@ -191,7 +196,7 @@ class TweetHeader: UICollectionReusableView {
     }
     
     @objc func showActionSheet() {
-        print("DEBUG: show Action Sheet")
+        delegate?.showActionSheet()
     }
     
     @objc func handleCommentTapped() {
