@@ -136,6 +136,7 @@ extension ProfileController: ProfileHeaderDelegate {
         } else {
             UserService.shared.followUser(uid: user.uid) { ref, error in
                 self.user.isFollowed = true
+                NotificationService.shared.uploadNotification(type: .follow, user: self.user)
              }
         }
     }

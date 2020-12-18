@@ -228,6 +228,8 @@ class TweetHeader: UICollectionReusableView {
         dateLabel.text = viewModel.headerTimestamp
         retweetsLabel.attributedText = viewModel.retweetsAttributedString
         likesLabel.attributedText = viewModel.likesAttributedString
+        likeButton.tintColor = viewModel.likeButtonTintColor
+        likeButton.setImage(viewModel.likeButtonImage, for: .normal)
     }
     
     func createButton(withImageName imageName: String) -> UIButton {
